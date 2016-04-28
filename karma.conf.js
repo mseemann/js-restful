@@ -27,7 +27,7 @@ module.exports = function (config) {
             ]
          },
          stats: { colors: true, reasons: true },
-         debug: false
+         debug: true
       },
 
       webpackServer: {
