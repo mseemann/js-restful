@@ -22,7 +22,8 @@
     "put",
     "delete",
     "path",
-    "javax.ws.rs"
+    "javax.ws.rs",
+    "es6 decorator"
   ],
   "author": "Michael Seemann",
   "license": "MIT",
