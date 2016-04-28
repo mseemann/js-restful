@@ -39,6 +39,6 @@ typings/
 .idea/
 
 #generated files
-*.js
+src/**/*.js
 *.js.map
 *.d.ts
