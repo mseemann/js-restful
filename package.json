@@ -2,9 +2,9 @@
   "name": "js-restful",
   "version": "0.0.1",
   "description": "Create a RESTful service with ES6 decorators for your node.js application.",
-  "main": "js-restful.js",
+  "main": "src/js-restful.ts",
   "scripts": {
-    "test": "test"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,13 @@
   ],
   "author": "Michael Seemann",
   "license": "MIT",
+  "dependencies": {
+    "reflect-metadata": "0.1.2",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "typescript":"~1.8.0"
+  },
   "bugs": {
     "url": "https://github.com/mseemann/js-restful/issues"
   },
