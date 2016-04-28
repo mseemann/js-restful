@@ -2,7 +2,7 @@
   "name": "js-restful",
   "version": "0.0.1",
   "description": "Create a RESTful service with ES6 decorators for your node.js application.",
-  "main": "src/js-restful.ts",
+  "main": "dist/js-restful.js",
   "scripts": {
     "test": "node test/test.js"
   },
