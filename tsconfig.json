@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": false,
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": true,
@@ -12,6 +12,9 @@
   },
   "files":[
     "typings/main.d.ts",
-    "src/js-restful.ts"
+    "src/js-restful.ts",
+    "src/core/namings.ts",
+    "src/core/rest-decorators.ts",
+    "src/js-restify-express.ts"
   ]
 }

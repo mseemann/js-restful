@@ -6,7 +6,7 @@
   "typings": "./src/js-restful.d.ts",
   "scripts": {
     "install_typings": "typings install",
-    "test": "tslint *.ts && typings install && tsc",
+    "test": "tslint *.ts && typings install && tsc && karma start",
     "prepublish": "typings install && tsc"
   },
   "repository": {
@@ -31,10 +31,18 @@
     "express": "^4.13.4"
   },
   "devDependencies": {
+    "es6-shim": "0.35.0",
+    "jasmine-core": "2.4.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-webpack": "1.7.0",
+    "phantomjs-prebuilt": "^2.1.7",
     "tslint": "3.8.1",
     "typescript": "1.8.10",
     "typings": "0.8.1",
-    "ts-loader": "0.8.2"
+    "webpack": "1.13.0"
   },
   "bugs": {
     "url": "https://github.com/mseemann/js-restful/issues"

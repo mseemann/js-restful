@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import * as namings from './namings';
+
 
 export function Path (path:string) : Function {
     return function(target: Function){
@@ -6,24 +8,17 @@ export function Path (path:string) : Function {
     }
 }
 
-export function GET()  {
+function createHttpMethodFunction(httpMethod:string){
     return function(target: Object, key: string, descriptor: TypedPropertyDescriptor<any>) {
-
-        // var originalMethod = descriptor.value;
-        // descriptor.value = function (...args:any[]) {
-        //   var a = args.map(a => JSON.stringify(a)).join();
-        //   // note usage of originalMethod here
-        //   var result = originalMethod.apply(this, args);
-        //   var r = JSON.stringify(result);
-        //   console.log(`Call: ${key}(${a}) => ${r}`);
-        //   return result;
-        // }
-
-        Reflect.defineMetadata('jsrestful::GET', true, descriptor.value);
-
-        return descriptor;
+        Reflect.defineMetadata(namings.buildFullName(httpMethod), true, descriptor.value);
     }
 }
+
+export function GET() { return createHttpMethodFunction(namings.getMethod); }
+export function POST() { return createHttpMethodFunction(namings.postMethod); }
+export function PUT() { return createHttpMethodFunction(namings.putMethod); }
+export function DELETE() { return createHttpMethodFunction(namings.deleteMethod); }
+
 
 export function PathParam(name:string){
     return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
