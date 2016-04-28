@@ -1,4 +1,3 @@
-
 import 'reflect-metadata';
 
 export function Path (path:string) : Function {

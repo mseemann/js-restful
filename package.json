@@ -2,8 +2,8 @@
   "name": "js-restful",
   "version": "0.0.1",
   "description": "Create a RESTful service with ES6 decorators for your node.js application.",
-  "main": "js-restful.js",
-  "typings": "./js-restful.d.ts",
+  "main": "src/js-restful.js",
+  "typings": "./src/js-restful.d.ts",
   "scripts": {
     "install_typings": "typings install",
     "test": "tslint *.ts && typings install && tsc",
