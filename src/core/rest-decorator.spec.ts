@@ -23,7 +23,9 @@ class Test{
 }
 
 describe('rest-decorator', () => {
+
     describe('http method decorator', () => {
+
         const test = new Test();
 
         it('should have a decorator GET on method mGet', () => {
