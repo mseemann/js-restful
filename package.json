@@ -2,10 +2,12 @@
   "name": "js-restful",
   "version": "0.0.1",
   "description": "Create a RESTful service with ES6 decorators for your node.js application.",
-  "main": "dist/js-restful.js",
-  "typings": "dist/js-restful.d.ts",
+  "main": "js-restful.js",
+  "typings": "./js-restful.d.ts",
   "scripts": {
-    "test": "node test/test.js"
+    "install_typings": "typings install",
+    "test": "tslint *.ts && typings install && tsc",
+    "prepublish": "typings install && tsc"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,10 @@
     "express": "^4.13.4"
   },
   "devDependencies": {
-    "typescript":"~1.8.0"
+    "tslint": "3.8.1",
+    "typescript": "1.8.10",
+    "typings": "0.8.1",
+    "ts-loader": "0.8.2"
   },
   "bugs": {
     "url": "https://github.com/mseemann/js-restful/issues"

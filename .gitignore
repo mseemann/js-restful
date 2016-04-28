@@ -32,9 +32,13 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-
 #ambient typings
 typings/
 
 #webstorm configuration
 .idea/
+
+#generated files
+*.js
+*.js.map
+*.d.ts
