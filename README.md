@@ -52,10 +52,3 @@ class BookService {
     }
 }
 ```
-
-**I Need Help!**
-The coverage bage shows not the right coverage.
-Because of the preprocessing used libs (for example
-the source for reflect-metadata) is included in
-the measurements. For sure this is wrong.
-If anybody knows how to fix it - your are welcome!

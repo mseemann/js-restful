@@ -20,7 +20,7 @@ describe('rest-descriptor-parser', () => {
 
     it('should have a base path', () => {
         // TODO this will not work! what the hell is the reason why the meta data are lost if i use the class with metadata in different spec files!
-       // expect(descriptor.basePath).toBe('/books');
+       expect(descriptor.basePath).toBe('/books');
     })
 
 });
