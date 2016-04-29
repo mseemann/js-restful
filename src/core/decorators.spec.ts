@@ -1,6 +1,6 @@
+import 'reflect-metadata';
 import { ParamDescription } from './decorators';
 import * as namings from './namings';
-import getOwnPropertyDescriptor = Reflect.getOwnPropertyDescriptor;
 import { BookService } from './../../test/test-classes';
 
 
