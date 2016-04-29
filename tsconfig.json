@@ -20,7 +20,6 @@
     "src/core/descriptor.ts",
     "src/core/decorator-parser.ts",
     "src/core/decorator-parser.spec.ts",
-    "test/test-classes.ts",
-    "src/js-restify-express.ts"
+    "src/core/test-classes.ts"
   ]
 }

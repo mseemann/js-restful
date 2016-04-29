@@ -40,7 +40,6 @@ typings/
 
 #generated files
 src/**/*.js
-test/**/*.js
 *.js.map
 *.d.ts
 

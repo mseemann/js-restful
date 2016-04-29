@@ -1,4 +1,5 @@
-import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from './../src/core/decorators';
+
+import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from './decorators';
 
 export class Book {
     id:number;

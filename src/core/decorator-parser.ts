@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import 'es7-reflect-metadata';
 import {RestDescriptor, MethodDescriptor} from "./descriptor";
 import * as namings from './namings';
 
@@ -9,16 +9,12 @@ class Parser {
     constructor(){
     }
 
-    parseBasePath(service: any) : string | void {
-        console.log(service);
-        console.log(Reflect.getMetadataKeys(service.constructor));
+    parseBasePath(service: Object) : string | void {
         let path =  Reflect.getMetadata(namings.buildFullName((namings.path)), service.constructor);
-        console.log(path);
         return path ? path : null;
     }
 
     parseMethodDescriptions(service): MethodDescriptor[] {
-
         return [];
     }
 

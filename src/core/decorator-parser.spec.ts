@@ -1,27 +1,26 @@
-import 'reflect-metadata';
+
 import { DecoratorParser } from './decorator-parser';
-import { BookService } from './../../test/test-classes';
 import { RestDescriptor } from './descriptor';
+import { BookService } from './test-classes';
+
 
 describe('rest-descriptor-parser', () => {
 
-    const bookService = new BookService();
-
+    var bookService:BookService = null;
     var descriptor:RestDescriptor = null;
 
-    beforeEach( () => descriptor = DecoratorParser.parse(bookService));
+    beforeEach( () => {
+        bookService = new BookService();
+        descriptor = DecoratorParser.parse(bookService)
+    });
 
     it('should create a RestDescriptor from the service', () => {
         expect(descriptor).not.toBeNull();
     })
 
     it('should have a base path', () => {
-        console.log('----');
-        console.log(bookService);
-        console.log(Reflect.getMetadataKeys(bookService.constructor));
-        console.log('----X');
-
-        //expect(descriptor.basePath).toBe('/books');
+        // TODO this will not work! what the hell is the reason why the meta data are lost if i use the class with metadata in different spec files!
+       // expect(descriptor.basePath).toBe('/books');
     })
 
 });

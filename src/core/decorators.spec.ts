@@ -1,13 +1,12 @@
-import 'reflect-metadata';
 import { ParamDescription } from './decorators';
 import * as namings from './namings';
-import { BookService } from './../../test/test-classes';
-
-
+import { BookService } from './test-classes';
+import { DecoratorParser } from './decorator-parser';
 
 describe('rest-decorator', () => {
 
     const bookService = new BookService();
+    const descriptor = DecoratorParser.parse(bookService)
 
     describe('http method decorator', () => {
 
@@ -31,6 +30,13 @@ describe('rest-decorator', () => {
     describe('path decorator', () => {
 
         it('should have a Path decorator at the class', () => {
+
+            console.log('y----y');
+            console.log(bookService);
+            console.log(Reflect.getMetadataKeys(bookService.constructor));
+            console.log(Reflect.getMetadataKeys(bookService.allBooks));
+            console.log('y----Xy');
+
             expect(Reflect.getMetadata(namings.buildFullName((namings.path)), bookService.constructor)).toBe('/books');
         })
 
@@ -71,4 +77,17 @@ describe('rest-decorator', () => {
             expect(headerParams).toContain({pathParam:'token', index: 1});
         })
     })
+
+
+    describe('RestDescriptor', () => {
+
+        it('should create a RestDescriptor from the service', () => {
+            expect(descriptor).not.toBeNull();
+        })
+
+        it('should have a base path', () => {
+            expect(descriptor.basePath).toBe('/books');
+        })
+    })
+
 });

@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import 'es7-reflect-metadata';
 import * as namings from './namings';
 
 
@@ -45,7 +45,9 @@ export function DELETE() { return createHttpMethodFunction(namings.deleteMethod)
  * @returns the decorated function
  */
 export function Path (path:string) : Function {
+
     return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor){
+        console.log('add path '+ path+ ' to '+target);
         if(!propertyKey && !descriptor){
             // add meta data to the class itself - e.g. target is the constructor and propertyKey and descriptor are undefined
             return Reflect.defineMetadata(namings.buildFullName(namings.path), path, target);

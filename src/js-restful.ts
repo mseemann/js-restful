@@ -1,5 +1,5 @@
-
 export { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from './core/decorators';
-export { JsRestify }  from './js-restify-express';
+export { DecoratorParser } from './core/decorator-parser';
+export { RestDescriptor, MethodDescriptor } from './core/descriptor';
 
 
