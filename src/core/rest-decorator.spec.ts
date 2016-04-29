@@ -1,5 +1,4 @@
-import 'es6-shim';
-import 'reflect-metadata';
+
 import * as http from './rest-decorators';
 import * as namings from './namings';
 

@@ -42,3 +42,6 @@ typings/
 src/**/*.js
 *.js.map
 *.d.ts
+
+#code coverage
+coverage/
