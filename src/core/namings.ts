@@ -3,15 +3,13 @@
 const namespace     = 'js-restful';
 const separator     = ':';
 
-export const getMethod     = 'GET';
-export const postMethod    = 'POST';
-export const putMethod     = 'PUT';
-export const deleteMethod  = 'DELETE';
+export const httpMethodMarker = namespace + separator + 'HTTP-METHOD';
 
-export const path          = 'Path';
-export const pathParam     = 'PathParam';
-export const headerParam   = 'HeaderParam';
+export const getMethod     = httpMethodMarker +  separator + 'GET';
+export const postMethod    = httpMethodMarker +  separator + 'POST';
+export const putMethod     = httpMethodMarker +  separator + 'PUT';
+export const deleteMethod  = httpMethodMarker +  separator + 'DELETE';
 
-export function buildFullName(name){
-    return namespace + separator + name;
-}
+export const path          = namespace + separator + 'Path';
+export const pathParam     = namespace + separator + 'PathParam';
+export const headerParam   = namespace + separator + 'HeaderParam';

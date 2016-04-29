@@ -9,6 +9,10 @@ export class Book {
 @Path('/books')
 export class BookService {
 
+    testProperty:number = 2;
+
+    unDecoratedMethod(){}
+
     @GET()
     allBooks() : Book[]{
        return [];

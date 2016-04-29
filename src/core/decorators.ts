@@ -4,7 +4,7 @@ import * as namings from './namings';
 
 function createHttpMethodFunction(httpMethod:string){
     return function(target: Object, key: string, descriptor: TypedPropertyDescriptor<any>) {
-        Reflect.defineMetadata(namings.buildFullName(httpMethod), true, descriptor.value);
+        Reflect.defineMetadata(httpMethod, true, descriptor.value);
     }
 }
 
@@ -49,10 +49,10 @@ export function Path (path:string) : Function {
     return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor){
         if(!propertyKey && !descriptor){
             // add meta data to the class itself - e.g. target is the constructor and propertyKey and descriptor are undefined
-            return Reflect.defineMetadata(namings.buildFullName(namings.path), path, target);
+            return Reflect.defineMetadata(namings.path, path, target);
         } else {
             // add meta data to a function
-            return Reflect.defineMetadata(namings.buildFullName(namings.path), path, descriptor.value);
+            return Reflect.defineMetadata(namings.path, path, descriptor.value);
         }
     }
 }
@@ -76,8 +76,6 @@ function createParamDecorator(name: string, pathParamKey: string){
     }
 }
 
-const pathParamKey = namings.buildFullName(namings.pathParam);
-const headerParamKey = namings.buildFullName(namings.headerParam);
 
 /**
  * Specifies how a method parameter is evealuated. In this case the value will be taken
@@ -85,7 +83,7 @@ const headerParamKey = namings.buildFullName(namings.headerParam);
  * @param name the name in the path that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
-export function PathParam(name:string){ return createParamDecorator(name, pathParamKey);}
+export function PathParam(name:string){ return createParamDecorator(name, namings.pathParam);}
 
 
 /**
@@ -94,4 +92,4 @@ export function PathParam(name:string){ return createParamDecorator(name, pathPa
  * @param name the name in the http header that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
-export function HeaderParam(name:string){ return createParamDecorator(name, headerParamKey);}
+export function HeaderParam(name:string){ return createParamDecorator(name, namings.headerParam);}
