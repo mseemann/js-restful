@@ -17,6 +17,7 @@
     "src/core/namings.spec.ts",
     "src/core/rest-decorators.ts",
     "src/core/rest-decorators.spec.ts",
+    "src/core/test-classes.ts",
     "src/js-restify-express.ts"
   ]
 }
