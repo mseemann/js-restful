@@ -1,4 +1,4 @@
-import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from './rest-decorators';
+import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from './../src/core/rest-decorators';
 
 export class Book {
     id:number;

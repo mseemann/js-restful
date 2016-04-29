@@ -1,7 +1,7 @@
 import { PathParamDescription } from './rest-decorators';
 import * as namings from './namings';
 import getOwnPropertyDescriptor = Reflect.getOwnPropertyDescriptor;
-import { BookService } from './test-classes';
+import { BookService } from './../../test/test-classes';
 
 
 

@@ -18,6 +18,8 @@ npm install js-restful --save
 Extend your node js service class with decorators:
 
 ```typescript
+import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from 'js-restful';
+
 class Book {
     id:number;
     name: string;
@@ -51,3 +53,9 @@ class BookService {
 }
 ```
 
+**Need Help!**
+The coverage bage shows not the right coverage.
+Because of the preprocessing used libs (for example
+the source for reflect-metadata) is included in
+the measurements. For sure this is wrong.
+If anybody knows how to fix it - your are welcome!
