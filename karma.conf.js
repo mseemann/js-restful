@@ -25,7 +25,7 @@ module.exports = function (config) {
                {
                   test: /\.ts$/,
                   loader: 'ts',
-                  exclude: /node_modules/
+                  exclude: [/node_modules/],
                }
             ]
          },
@@ -37,7 +37,7 @@ module.exports = function (config) {
          noInfo: true
       },
 
-      reporters: ['progress', 'coverage'], //, 'coveralls'
+      reporters: ['progress', 'coverage', 'coveralls'],
 
       coverageReporter: {
          type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
