@@ -7,7 +7,8 @@
   "scripts": {
     "install_typings": "typings install",
     "test": "tslint *.ts && typings install && tsc && karma start",
-    "prepublish": "typings install && tsc"
+    "prepublish": "typings install && tsc",
+    "docs": "jsdoc -c jsdoc-conf.json -r src"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "coveralls": "^2.11.9",
     "es6-shim": "0.35.0",
     "jasmine-core": "2.4.1",
+    "jsdoc": "^3.4.0",
     "karma": "^0.13.22",
     "karma-coverage": "^0.5.5",
     "karma-coveralls": "^1.1.2",

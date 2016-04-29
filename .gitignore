@@ -45,3 +45,6 @@ src/**/*.js
 
 #code coverage
 coverage/
+
+#generated docs
+out/

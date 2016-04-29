@@ -47,7 +47,7 @@ class BookService {
 
     @Path('/:id')
     @DELETE()
-    deleteBook(@PathParam('id') id:number): boolean{
+    deleteBook(@PathParam('id') id:number): boolean {
         return true;
     }
 }

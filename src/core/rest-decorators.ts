@@ -8,6 +8,10 @@ function createHttpMethodFunction(httpMethod:string){
     }
 }
 
+/**
+ * Publish a method as an http endpoint for get requests.
+ * @returns teh decorated function
+ */
 export function GET() { return createHttpMethodFunction(namings.getMethod); }
 export function POST() { return createHttpMethodFunction(namings.postMethod); }
 export function PUT() { return createHttpMethodFunction(namings.putMethod); }
