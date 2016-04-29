@@ -1,4 +1,4 @@
-import { PathParamDescription } from './rest-decorators';
+import { ParamDescription } from './rest-decorators';
 import * as namings from './namings';
 import getOwnPropertyDescriptor = Reflect.getOwnPropertyDescriptor;
 import { BookService } from './../../test/test-classes';
@@ -46,14 +46,14 @@ describe('rest-decorator', () => {
     describe('pathParam decorator', () => {
 
         it('should have a PathParam decorator at the method deleteBook for Parameter id with index 0', () => {
-            let pathParams: PathParamDescription[] = Reflect.getMetadata(namings.buildFullName(namings.pathParam), bookService, 'deleteBook');
+            let pathParams: ParamDescription[] = Reflect.getMetadata(namings.buildFullName(namings.pathParam), bookService, 'deleteBook');
             expect(pathParams.length).toBe(1);
 
             expect(pathParams).toContain({pathParam:'id', index: 0});
         })
 
         it('should have two PathParams at the method updateBook', () => {
-            let pathParams: PathParamDescription[] = Reflect.getMetadata(namings.buildFullName(namings.pathParam), bookService, 'updateBook');
+            let pathParams: ParamDescription[] = Reflect.getMetadata(namings.buildFullName(namings.pathParam), bookService, 'updateBook');
 
             expect(pathParams.length).toBe(2);
 
@@ -64,7 +64,7 @@ describe('rest-decorator', () => {
 
     describe('headerParam decorator', () => {
         it('should have one HeaderParam at the method createBook', () => {
-            let headerParams: PathParamDescription[] = Reflect.getMetadata(namings.buildFullName(namings.headerParam), bookService, 'createBook');
+            let headerParams: ParamDescription[] = Reflect.getMetadata(namings.buildFullName(namings.headerParam), bookService, 'createBook');
 
             expect(headerParams.length).toBe(1);
 

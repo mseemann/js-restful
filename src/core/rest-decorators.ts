@@ -9,15 +9,41 @@ function createHttpMethodFunction(httpMethod:string){
 }
 
 /**
- * Publish a method as an http endpoint for get requests.
- * @returns teh decorated function
+ * Publish a method as an http endpoint for GET requests. If no Path is specified the path will be /.
+ * The decorator is only allowed on methods.
+ * @returns the decorated function
  */
 export function GET() { return createHttpMethodFunction(namings.getMethod); }
+
+/**
+ * Publish a method as an http endpoint for POST requests. If no Path is specified the path will be /.
+ * The decorator is only allowed on methods.
+ * @returns the decorated function
+ */
 export function POST() { return createHttpMethodFunction(namings.postMethod); }
+
+/**
+ * Publish a method as an http endpoint for PUT requests. If no Path is specified the path will be /.
+ * The decorator is only allowed on methods.
+ * @returns the decorated function
+ */
 export function PUT() { return createHttpMethodFunction(namings.putMethod); }
+
+/**
+ * Publish a method as an http endpoint for DELETE requests. If no Path is specified the path will be /.
+ * The decorator is only allowed on methods.
+ * @returns the decorated function
+ */
 export function DELETE() { return createHttpMethodFunction(namings.deleteMethod); }
 
 
+/**
+ * Specify the Path for teh ressource. If the decorator is present at class level all methods paths will be
+ * prefixed with this path. 
+ * @param path The path for the class or method. The path must not be start with /. 
+ * The slash will be added automatically.
+ * @returns the decorated function
+ */
 export function Path (path:string) : Function {
     return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor){
         if(!propertyKey && !descriptor){
@@ -30,16 +56,20 @@ export function Path (path:string) : Function {
     }
 }
 
-
-export class PathParamDescription {
+/**
+ * Description of a parameter decorator.
+ */
+export class ParamDescription {
+    // the name of the parameter - must match a parameter in the path.
     pathParam:string;
+    // the index of the parameter
     index:number;
 }
 
 
 function createParamDecorator(name: string, pathParamKey: string){
     return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
-        let existingPathParams: PathParamDescription[] = Reflect.getOwnMetadata(pathParamKey, target, propertyKey) || [];
+        let existingPathParams: ParamDescription[] = Reflect.getOwnMetadata(pathParamKey, target, propertyKey) || [];
         existingPathParams.push({pathParam:name, index: parameterIndex});
         Reflect.defineMetadata(pathParamKey, existingPathParams, target, propertyKey);
     }
@@ -48,5 +78,19 @@ function createParamDecorator(name: string, pathParamKey: string){
 const pathParamKey = namings.buildFullName(namings.pathParam);
 const headerParamKey = namings.buildFullName(namings.headerParam);
 
+/**
+ * Specifies how a method parameter is evealuated. In this case the value will be taken
+ * from the parameter that is specified in the path decorator.
+ * @param name the name in the path that should be used to provide the parameter to the method.
+ * @returns the decorated function
+ */
 export function PathParam(name:string){ return createParamDecorator(name, pathParamKey);}
+
+
+/**
+ * Specifies how a method parameter is evealuated. In this case the value will be taken
+ * from a http header.
+ * @param name the name in the http header that should be used to provide the parameter to the method.
+ * @returns the decorated function
+ */
 export function HeaderParam(name:string){ return createParamDecorator(name, headerParamKey);}
