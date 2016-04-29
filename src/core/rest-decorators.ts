@@ -2,12 +2,6 @@ import 'reflect-metadata';
 import * as namings from './namings';
 
 
-export function Path (path:string) : Function {
-    return function(target: Function){
-        Reflect.defineMetadata('jsrestful::Path', path, target);
-    }
-}
-
 function createHttpMethodFunction(httpMethod:string){
     return function(target: Object, key: string, descriptor: TypedPropertyDescriptor<any>) {
         Reflect.defineMetadata(namings.buildFullName(httpMethod), true, descriptor.value);
@@ -20,10 +14,35 @@ export function PUT() { return createHttpMethodFunction(namings.putMethod); }
 export function DELETE() { return createHttpMethodFunction(namings.deleteMethod); }
 
 
-export function PathParam(name:string){
-    return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
-        let existingPathParams: any[] = Reflect.getOwnMetadata('jsrestful::PathParam', target, propertyKey) || [];
-        existingPathParams.push({pathParam:name, index: parameterIndex});
-        Reflect.defineMetadata('jsrestful::PathParam', existingPathParams, target, propertyKey);
+export function Path (path:string) : Function {
+    return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor){
+        if(!propertyKey && !descriptor){
+            // add meta data to the class itself - e.g. target is the constructor and propertyKey and descriptor are undefined
+            return Reflect.defineMetadata(namings.buildFullName(namings.path), path, target);
+        } else {
+            // add meta data to a function
+            return Reflect.defineMetadata(namings.buildFullName(namings.path), path, descriptor.value);
+        }
     }
 }
+
+
+export class PathParamDescription {
+    pathParam:string;
+    index:number;
+}
+
+
+function createParamDecorator(name: string, pathParamKey: string){
+    return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
+        let existingPathParams: PathParamDescription[] = Reflect.getOwnMetadata(pathParamKey, target, propertyKey) || [];
+        existingPathParams.push({pathParam:name, index: parameterIndex});
+        Reflect.defineMetadata(pathParamKey, existingPathParams, target, propertyKey);
+    }
+}
+
+const pathParamKey = namings.buildFullName(namings.pathParam);
+const headerParamKey = namings.buildFullName(namings.headerParam);
+
+export function PathParam(name:string){ return createParamDecorator(name, pathParamKey);}
+export function HeaderParam(name:string){ return createParamDecorator(name, headerParamKey);}
