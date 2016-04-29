@@ -8,7 +8,7 @@
     "install_typings": "typings install",
     "test": "typings install && tsc && node --max-old-space-size=4096 node_modules/karma/bin/karma start",
     "prepublish": "typings install && tsc",
-    "docs": "jsdoc -c jsdoc-conf.json -r src"
+    "docs": "jsdoc -c config/jsdoc-conf.json -r src"
   },
   "repository": {
     "type": "git",
