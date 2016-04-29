@@ -1,4 +1,4 @@
-import { ParamDescription } from './rest-decorators';
+import { ParamDescription } from './decorators';
 import * as namings from './namings';
 import getOwnPropertyDescriptor = Reflect.getOwnPropertyDescriptor;
 import { BookService } from './../../test/test-classes';
