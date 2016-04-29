@@ -31,11 +31,11 @@ describe('rest-decorator', () => {
 
         it('should have a Path decorator at the class', () => {
 
-            console.log('y----y');
-            console.log(bookService);
-            console.log(Reflect.getMetadataKeys(bookService.constructor));
-            console.log(Reflect.getMetadataKeys(bookService.allBooks));
-            console.log('y----Xy');
+            // console.log('y----y');
+            // console.log(bookService);
+            // console.log(Reflect.getMetadataKeys(bookService.constructor));
+            // console.log(Reflect.getMetadataKeys(bookService.allBooks));
+            // console.log('y----Xy');
 
             expect(Reflect.getMetadata(namings.buildFullName((namings.path)), bookService.constructor)).toBe('/books');
         })

@@ -29,7 +29,7 @@
   "author": "Michael Seemann",
   "license": "MIT",
   "dependencies": {
-    "es7-reflect-metadata": "^1.6.0"
+    "reflect-metadata": "^0.1.3"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",

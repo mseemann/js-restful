@@ -1,4 +1,4 @@
-import 'es7-reflect-metadata';
+import 'reflect-metadata';
 import {RestDescriptor, MethodDescriptor} from "./descriptor";
 import * as namings from './namings';
 
