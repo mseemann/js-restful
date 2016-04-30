@@ -1,4 +1,4 @@
-import { ParamDescription } from './decorators';
+import { ParamDescription } from './descriptions';
 import * as namings from './namings';
 import { BookService } from './test-classes';
 

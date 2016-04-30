@@ -1,28 +1,28 @@
 
-import { DecoratorParser } from './decorator-parser';
-import { RestDescriptor, HttpMethod } from './descriptor';
+import { ServiceParser } from './decorator-parser';
+import { ServiceDescription, HttpMethod } from './descriptions';
 import { BookService } from './test-classes';
 
 
-describe('rest-descriptor-parser', () => {
+describe('rest-serviceDescription-parser', () => {
 
     var bookService:BookService = new BookService();
-    var descriptor:RestDescriptor = DecoratorParser.parse(bookService);
+    var serviceDescription:ServiceDescription = ServiceParser.parse(bookService);
 
-    it('should create a RestDescriptor from the service', () => {
-        expect(descriptor).not.toBeNull();
+    it('should create a ServiceDescription from the service', () => {
+        expect(serviceDescription).not.toBeNull();
     })
 
     it('should have a base path', () => {
-       expect(descriptor.basePath).toBe('/books');
+       expect(serviceDescription.basePath).toBe('/books');
     })
 
     it('should have 4 methods decorated with a httpMethod', () => {
-        expect(descriptor.methods.length).toBe(4);
+        expect(serviceDescription.methods.length).toBe(4);
     })
 
     describe('allBooks method', () => {
-        let method = descriptor.getMethodDescriptorForMethodName('allBooks');
+        let method = serviceDescription.getMethodDescriptorForMethodName('allBooks');
 
         it('should be a GET method', () => {
            expect(method.httpMethod).toBe(HttpMethod.GET);
@@ -46,7 +46,7 @@ describe('rest-descriptor-parser', () => {
     });
 
     describe('deleteBook method', () => {
-        let method = descriptor.getMethodDescriptorForMethodName('deleteBook');
+        let method = serviceDescription.getMethodDescriptorForMethodName('deleteBook');
 
         it('should be a DELETE method', () => {
             expect(method.httpMethod).toBe(HttpMethod.DELETE);
@@ -71,7 +71,7 @@ describe('rest-descriptor-parser', () => {
     });
 
     describe('updateBook methods', () => {
-        let method = descriptor.getMethodDescriptorForMethodName('updateBook');
+        let method = serviceDescription.getMethodDescriptorForMethodName('updateBook');
 
         it('should be a PUT method', () => {
             expect(method.httpMethod).toBe(HttpMethod.PUT);
@@ -97,7 +97,7 @@ describe('rest-descriptor-parser', () => {
     });
 
     describe('createBook method', () => {
-        let method = descriptor.getMethodDescriptorForMethodName('createBook');
+        let method = serviceDescription.getMethodDescriptorForMethodName('createBook');
 
         it('should be a POST method', () => {
             expect(method.httpMethod).toBe(HttpMethod.POST);

@@ -1,11 +1,10 @@
 import 'reflect-metadata';
-import { RestDescriptor, MethodDescriptor, HttpMethod } from "./descriptor";
-import { ParamDescription } from './decorators';
+import { ServiceDescription, MethodDescription, HttpMethod, ParamDescription } from "./descriptions";
 import * as namings from './namings';
 
 class Parser {
 
-    descriptor:RestDescriptor = new RestDescriptor();
+    serviceDescription:ServiceDescription = new ServiceDescription();
 
     private HttpMethodMap : { [key:string]:HttpMethod; } = {};
 
@@ -23,9 +22,9 @@ class Parser {
         return path ? path : null;
     }
 
-    parseMethodDescriptions(service): MethodDescriptor[] {
+    parseMethodDescriptions(service): MethodDescription[] {
 
-        var methods:MethodDescriptor[] = [];
+        var methods:MethodDescription[] = [];
 
         for (let name of Object.getOwnPropertyNames(Object.getPrototypeOf(service))) {
             let method = service[name];
@@ -62,7 +61,7 @@ class Parser {
             headerParams = Reflect.getMetadata(namings.headerParam, service, name) || [];
         
             if ( httpMethod !== null ) {
-                var md = new MethodDescriptor(name, httpMethod);
+                var md = new MethodDescription(name, httpMethod);
                 md.path         = path;
                 md.pathParams   = pathParams;
                 md.headerParams = headerParams;
@@ -73,27 +72,27 @@ class Parser {
         return methods;
     }
 
-    traverse(service: Object):RestDescriptor {
+    traverse(service: Object):ServiceDescription {
 
         let basePath = this.parseBasePath(service);
         // may be null or /
-        this.descriptor.basePath = basePath;
+        this.serviceDescription.basePath = basePath;
 
         // only descriptions marked with get, post, put, delete
-        let methods:MethodDescriptor[] = this.parseMethodDescriptions(service);
+        let methods:MethodDescription[] = this.parseMethodDescriptions(service);
         methods.forEach( (aMethod) => {
             // may have a path,
             // may have parameter - these parameters must be present oin the path
-            this.descriptor.addMethod(aMethod);
+            this.serviceDescription.addMethod(aMethod);
         });
 
-        return this.descriptor;
+        return this.serviceDescription;
     }
 }
 
-export class DecoratorParser {
+export class ServiceParser {
 
-    static parse(service: Object):RestDescriptor {
+    static parse(service: Object):ServiceDescription {
         let parser = new Parser();
         return parser.traverse(service);
     }

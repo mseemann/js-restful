@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import * as namings from './namings';
+import { ParamDescription } from './descriptions';
 
 
 function createHttpMethodFunction(httpMethod:string){
@@ -48,7 +49,7 @@ export function Path (path:string) : Function {
 
     return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor){
         if(!propertyKey && !descriptor){
-            // add meta data to the class itself - e.g. target is the constructor and propertyKey and descriptor are undefined
+            // add meta data to the class itself - e.g. target is the constructor and propertyKey and serviceDescription are undefined
             return Reflect.defineMetadata(namings.path, path, target);
         } else {
             // add meta data to a function
@@ -56,17 +57,6 @@ export function Path (path:string) : Function {
         }
     }
 }
-
-/**
- * Description of a parameter decorator.
- */
-export class ParamDescription {
-    // the name of the parameter - must match a parameter in the path.
-    pathParam:string;
-    // the index of the parameter
-    index:number;
-}
-
 
 function createParamDecorator(name: string, pathParamKey: string){
     return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
