@@ -1,6 +1,6 @@
-import { ParamDescription } from './descriptions';
+import {ParamDescription, HttpMethod} from './descriptions';
 import * as namings from './namings';
-import { BookService } from './test-classes';
+import { BookService } from './test-classes.spec';
 
 describe('rest-decorator', () => {
 
@@ -9,19 +9,19 @@ describe('rest-decorator', () => {
     describe('http method decorator', () => {
 
         it('should have a decorator GET on method allBooks', () => {
-            expect(Reflect.getMetadata(namings.getMethod, bookService.allBooks)).toBe(true);
+            expect(Reflect.getMetadata(namings.httpMethodMarker, bookService.allBooks)).toBe(HttpMethod.GET);
         });
 
         it('should have a decorator POST on method createBook', () => {
-            expect(Reflect.getMetadata(namings.postMethod, bookService.createBook)).toBe(true);
+            expect(Reflect.getMetadata(namings.httpMethodMarker, bookService.createBook)).toBe(HttpMethod.POST);
         });
 
         it('should have a decorator PUT on method updateBook', () => {
-            expect(Reflect.getMetadata(namings.putMethod, bookService.updateBook)).toBe(true);
+            expect(Reflect.getMetadata(namings.httpMethodMarker, bookService.updateBook)).toBe(HttpMethod.PUT);
         });
 
         it('should have a decorator DELETE on method deleteBook', () => {
-            expect(Reflect.getMetadata(namings.deleteMethod, bookService.deleteBook)).toBe(true);
+            expect(Reflect.getMetadata(namings.httpMethodMarker, bookService.deleteBook)).toBe(HttpMethod.DELETE);
         });
     });
 

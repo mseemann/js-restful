@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 import * as namings from './namings';
-import { ParamDescription } from './descriptions';
+import { ParamDescription, HttpMethod } from './descriptions';
 
 
-function createHttpMethodFunction(httpMethod:string){
+function createHttpMethodFunction(httpMethod:HttpMethod){
     return function(target: Object, key: string, descriptor: TypedPropertyDescriptor<any>) {
-        Reflect.defineMetadata(httpMethod, true, descriptor.value);
+        Reflect.defineMetadata(namings.httpMethodMarker, httpMethod, descriptor.value);
     }
 }
 
@@ -14,28 +14,28 @@ function createHttpMethodFunction(httpMethod:string){
  * The decorator is only allowed on methods.
  * @returns the decorated function
  */
-export function GET() { return createHttpMethodFunction(namings.getMethod); }
+export function GET() { return createHttpMethodFunction(HttpMethod.GET); }
 
 /**
  * Publish a method as an http endpoint for POST requests. If no Path is specified the path will be /.
  * The decorator is only allowed on methods.
  * @returns the decorated function
  */
-export function POST() { return createHttpMethodFunction(namings.postMethod); }
+export function POST() { return createHttpMethodFunction(HttpMethod.POST); }
 
 /**
  * Publish a method as an http endpoint for PUT requests. If no Path is specified the path will be /.
  * The decorator is only allowed on methods.
  * @returns the decorated function
  */
-export function PUT() { return createHttpMethodFunction(namings.putMethod); }
+export function PUT() { return createHttpMethodFunction(HttpMethod.PUT); }
 
 /**
  * Publish a method as an http endpoint for DELETE requests. If no Path is specified the path will be /.
  * The decorator is only allowed on methods.
  * @returns the decorated function
  */
-export function DELETE() { return createHttpMethodFunction(namings.deleteMethod); }
+export function DELETE() { return createHttpMethodFunction(HttpMethod.DELETE); }
 
 
 /**

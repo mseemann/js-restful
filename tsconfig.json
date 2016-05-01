@@ -15,12 +15,11 @@
     "src/vendor.ts",
     "src/js-restful.ts",
     "src/core/namings.ts",
-    "src/core/namings.spec.ts",
     "src/core/decorators.ts",
     "src/core/decorators.spec.ts",
     "src/core/descriptions.ts",
     "src/core/decorator-parser.ts",
     "src/core/decorator-parser.spec.ts",
-    "src/core/test-classes.ts"
+    "src/core/test-classes.spec.ts"
   ]
 }

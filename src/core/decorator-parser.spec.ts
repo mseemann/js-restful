@@ -1,7 +1,7 @@
 
 import { ServiceParser } from './decorator-parser';
 import { ServiceDescription, HttpMethod } from './descriptions';
-import { BookService } from './test-classes';
+import { BookService } from './test-classes.spec';
 
 
 describe('rest-serviceDescription-parser', () => {

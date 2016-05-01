@@ -6,17 +6,6 @@ class Parser {
 
     serviceDescription:ServiceDescription = new ServiceDescription();
 
-    private HttpMethodMap : { [key:string]:HttpMethod; } = {};
-
-    constructor(){
-
-        this.HttpMethodMap[namings.getMethod] = HttpMethod.GET;
-        this.HttpMethodMap[namings.postMethod] = HttpMethod.POST;
-        this.HttpMethodMap[namings.putMethod] = HttpMethod.PUT;
-        this.HttpMethodMap[namings.deleteMethod] = HttpMethod.DELETE;
-
-    }
-
     parseBasePath(service: Object) : string | void {
         let path =  Reflect.getMetadata(namings.path, service.constructor);
         return path ? path : null;
@@ -41,8 +30,8 @@ class Parser {
             methodKeys.forEach((k)=>{
 
                 // determine the http method
-                if ( k.indexOf(namings.httpMethodMarker) === 0 ) {
-                    httpMethod = this.HttpMethodMap[k];
+                if ( k === namings.httpMethodMarker) {
+                    httpMethod = <HttpMethod>Reflect.getMetadata(k, method);
                 }
 
                 // determine the path
