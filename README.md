@@ -1,5 +1,5 @@
 # js-restful
-Create a RESTful service with ES6 decorators for your node.js application.
+Create a RESTful service with ES7 decorators for your node.js application.
 
 [![CI Status](http://img.shields.io/travis/mseemann/js-restful.svg?style=flat)](https://travis-ci.org/mseemann/js-restful)
 [![npm version](https://badge.fury.io/js/js-restful.svg)](http://badge.fury.io/js/js-restful)
@@ -13,7 +13,7 @@ npm install js-restful --save
 ```
 
 **Usage**
-Extend your node js service class with decorators:
+Extend your node js service class with decorators (this is TypeScript with decorators!):
 
 ```typescript
 import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from 'js-restful';
