@@ -77,9 +77,17 @@ export function PathParam(name:string){ return createParamDecorator(name, naming
 
 
 /**
- * Specifies how a method parameter is evealuated. In this case the value will be taken
+ * Specifies how a method parameter is evaluated. In this case the value will be taken
  * from a http header.
  * @param name the name in the http header that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
 export function HeaderParam(name:string){ return createParamDecorator(name, namings.headerParam);}
+
+/**
+ * Specifies how a method parameter is evaluated. In this case the value will be taken
+ * from a url query parameter.
+ * @param name the name of the query param that should be used to provide the parameter to the method.
+ * @returns the decorated function
+ */
+export function QueryParam(name:string){ return createParamDecorator(name, namings.queryParam);}

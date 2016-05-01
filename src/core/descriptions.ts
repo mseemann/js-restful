@@ -49,6 +49,7 @@ export class MethodDescription {
     path:String | void              = null;
     pathParams:ParamDescription[]   = [];
     headerParams:ParamDescription[] = [];
+    queryParams:ParamDescription[]  = [];
 
     constructor(name:string, httpMethod:HttpMethod){
         this.methodName = name;

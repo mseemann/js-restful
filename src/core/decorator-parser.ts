@@ -25,6 +25,7 @@ class Parser {
             var path:String                     = null;
             var pathParams:ParamDescription[]   = [];
             var headerParams:ParamDescription[] = [];
+            var queryParams:ParamDescription[]  = [];
 
             let methodKeys: any[] = Reflect.getMetadataKeys(method);
             methodKeys.forEach((k)=>{
@@ -48,12 +49,16 @@ class Parser {
 
             // evaluate HeaderParams
             headerParams = Reflect.getMetadata(namings.headerParam, service, name) || [];
-        
+
+            // evaluate QueryParams
+            queryParams = Reflect.getMetadata(namings.queryParam, service, name) || [];
+
             if ( httpMethod !== null ) {
                 var md = new MethodDescription(name, httpMethod);
                 md.path         = path;
                 md.pathParams   = pathParams;
                 md.headerParams = headerParams;
+                md.queryParams  = queryParams;
                 methods.push(md);
             }
         }

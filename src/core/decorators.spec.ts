@@ -69,4 +69,14 @@ describe('rest-decorator', () => {
         })
     })
 
+    describe('queryParam decorator', () => {
+        it('should have one QueryParam at the method deleteBook', () => {
+            let queryParams: ParamDescription[] = Reflect.getMetadata(namings.queryParam, bookService, 'deleteBook');
+
+            expect(queryParams.length).toBe(1);
+
+            expect(queryParams).toContain({pathParam:'time', index: 1});
+        })
+    })
+
 });

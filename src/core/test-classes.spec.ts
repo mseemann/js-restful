@@ -1,5 +1,5 @@
 
-import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from './decorators';
+import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam} from './decorators';
 
 export class Book {
     id:number;
@@ -32,7 +32,7 @@ export class BookService {
 
     @Path('/:id')
     @DELETE()
-    deleteBook(@PathParam('id') id:number): boolean{
+    deleteBook(@PathParam('id') id:number, @QueryParam('time') time:number): boolean{
         return true;
     }
 }

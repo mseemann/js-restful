@@ -61,6 +61,11 @@ describe('rest-serviceDescription-parser', () => {
             expect(method.pathParams).toContain({pathParam: 'id', index: 0});
         })
 
+        it('should have one QueryParams', () => {
+            expect(method.queryParams.length).toBe(1);
+            expect(method.queryParams).toContain({pathParam: 'time', index: 1});
+        })
+
         it('should have no HeaderParams', () => {
             expect(method.headerParams.length).toBe(0);
         })
