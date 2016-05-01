@@ -58,12 +58,12 @@ describe('rest-serviceDescription-parser', () => {
 
         it('should have one PathParams', () => {
             expect(method.pathParams.length).toBe(1);
-            expect(method.pathParams).toContain({pathParam: 'id', index: 0});
+            expect(method.pathParams).toContain({paramName: 'id', index: 0});
         })
 
         it('should have one QueryParams', () => {
             expect(method.queryParams.length).toBe(1);
-            expect(method.queryParams).toContain({pathParam: 'time', index: 1});
+            expect(method.queryParams).toContain({paramName: 'time', index: 1});
         })
 
         it('should have no HeaderParams', () => {
@@ -88,8 +88,8 @@ describe('rest-serviceDescription-parser', () => {
 
         it('should have two PathParams', () => {
             expect(method.pathParams.length).toBe(2);
-            expect(method.pathParams).toContain({pathParam: 'id', index: 0});
-            expect(method.pathParams).toContain({pathParam: 'name', index: 1});
+            expect(method.pathParams).toContain({paramName: 'id', index: 0});
+            expect(method.pathParams).toContain({paramName: 'name', index: 1});
         })
 
         it('should have no HeaderParams', () => {
@@ -114,12 +114,12 @@ describe('rest-serviceDescription-parser', () => {
 
         it('should have one PathParams', () => {
             expect(method.pathParams.length).toBe(1);
-            expect(method.pathParams).toContain({pathParam: 'name', index: 0});
+            expect(method.pathParams).toContain({paramName: 'name', index: 0});
         })
 
         it('should have one HeaderParams', () => {
             expect(method.headerParams.length).toBe(1);
-            expect(method.headerParams).toContain({pathParam: 'token', index: 1});
+            expect(method.headerParams).toContain({paramName: 'token', index: 1});
         })
 
         it('just for fun the method resturns what is provided', () => {

@@ -61,7 +61,7 @@ export function Path (path:string) : Function {
 function createParamDecorator(name: string, pathParamKey: string){
     return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
         let existingPathParams: ParamDescription[] = Reflect.getOwnMetadata(pathParamKey, target, propertyKey) || [];
-        existingPathParams.push({pathParam:name, index: parameterIndex});
+        existingPathParams.push({paramName:name, index: parameterIndex});
         Reflect.defineMetadata(pathParamKey, existingPathParams, target, propertyKey);
     }
 }

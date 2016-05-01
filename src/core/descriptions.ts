@@ -24,7 +24,7 @@ export class ServiceDescription {
  */
 export class ParamDescription {
     // the name of the parameter - must match a parameter in the path.
-    pathParam:string;
+    paramName:string;
     // the index of the parameter
     index:number;
 }

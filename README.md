@@ -45,7 +45,7 @@ class BookService {
 
     @Path('/:id')
     @DELETE()
-    deleteBook(@PathParam('id') id:number): boolean {
+    deleteBook(@PathParam('id') id:number, , @QueryParam('time') time:number): boolean {
         return true;
     }
 }
@@ -70,28 +70,32 @@ The result is a complete description of your Service:
       "httpMethod":0,
       "path":null,
       "pathParams":[],
-      "headerParams":[]
+      "headerParams":[],
+      "queryParams":[]
     },
     {
       "methodName":"createBook",
       "httpMethod":1,
       "path":"/:name",
-      "pathParams":[{"pathParam":"name","index":0}],
-      "headerParams":[{"pathParam":"token","index":1}]
+      "pathParams":[{"paramName":"name","index":0}],
+      "headerParams":[{"paramName":"token","index":1}],
+      "queryParams":[]
     },
     {
       "methodName":"updateBook",
       "httpMethod":2,
       "path":"/:id/:name",
-      "pathParams":[{"pathParam":"name","index":1},{"pathParam":"id","index":0}],
-      "headerParams":[]
+      "pathParams":[{"paramName":"name","index":1},{"paramName":"id","index":0}],
+      "headerParams":[],
+      "queryParams":[]
     },
     {
       "methodName":"deleteBook",
       "httpMethod":3,
       "path":"/:id",
-      "pathParams":[{"pathParam":"id","index":0}],
-      "headerParams":[]
+      "pathParams":[{"paramName":"id","index":0}],
+      "headerParams":[],
+      "queryParams":[{"paramName":"time","index":1}]
     }
   ]
 }

@@ -46,7 +46,7 @@ describe('rest-decorator', () => {
             let pathParams: ParamDescription[] = Reflect.getMetadata(namings.pathParam, bookService, 'deleteBook');
             expect(pathParams.length).toBe(1);
 
-            expect(pathParams).toContain({pathParam:'id', index: 0});
+            expect(pathParams).toContain({paramName:'id', index: 0});
         })
 
         it('should have two PathParams at the method updateBook', () => {
@@ -54,8 +54,8 @@ describe('rest-decorator', () => {
 
             expect(pathParams.length).toBe(2);
 
-            expect(pathParams).toContain({pathParam:'id', index: 0});
-            expect(pathParams).toContain({pathParam:'name', index: 1});
+            expect(pathParams).toContain({paramName:'id', index: 0});
+            expect(pathParams).toContain({paramName:'name', index: 1});
         })
     });
 
@@ -65,7 +65,7 @@ describe('rest-decorator', () => {
 
             expect(headerParams.length).toBe(1);
 
-            expect(headerParams).toContain({pathParam:'token', index: 1});
+            expect(headerParams).toContain({paramName:'token', index: 1});
         })
     })
 
@@ -75,7 +75,7 @@ describe('rest-decorator', () => {
 
             expect(queryParams.length).toBe(1);
 
-            expect(queryParams).toContain({pathParam:'time', index: 1});
+            expect(queryParams).toContain({paramName:'time', index: 1});
         })
     })
 
