@@ -6,8 +6,8 @@ import { BookService } from './test-classes.spec';
 
 describe('rest-serviceDescription-parser', () => {
 
-    var bookService:BookService = new BookService();
-    var serviceDescription:ServiceDescription = ServiceParser.parse(bookService);
+    let bookService = new BookService();
+    let serviceDescription = ServiceParser.parse(bookService);
 
     it('should create a ServiceDescription from the service', () => {
         expect(serviceDescription).not.toBeNull();

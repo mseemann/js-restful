@@ -6,8 +6,6 @@ Create a RESTful service with ES6 decorators for your node.js application.
 [![Downloads](http://img.shields.io/npm/dm/js-restful.svg)](https://npmjs.org/package/js-restful)
 [![Coverage Status](https://coveralls.io/repos/github/mseemann/js-restful/badge.svg?branch=master)](https://coveralls.io/github/mseemann/js-restful?branch=master)
 
-**Status**
-In development. Not ready for use!
 
 **Installation**
 ```bash
@@ -52,3 +50,53 @@ class BookService {
     }
 }
 ```
+Later (at runtime) you can use the parser to get back all of these information:
+
+```typescript
+import { ServiceDescription, ServiceParser } from 'js-restful';
+
+let serviceDescription = ServiceParser.parse(bookService);
+
+```
+
+The result is a complete description of your Service:
+
+```json
+{
+  "basePath":"/books",
+  "methods":[
+    {
+      "methodName":"allBooks",
+      "httpMethod":0,
+      "path":null,
+      "pathParams":[],
+      "headerParams":[]
+    },
+    {
+      "methodName":"createBook",
+      "httpMethod":1,
+      "path":"/:name",
+      "pathParams":[{"pathParam":"name","index":0}],
+      "headerParams":[{"pathParam":"token","index":1}]
+    },
+    {
+      "methodName":"updateBook",
+      "httpMethod":2,
+      "path":"/:id/:name",
+      "pathParams":[{"pathParam":"name","index":1},{"pathParam":"id","index":0}],
+      "headerParams":[]
+    },
+    {
+      "methodName":"deleteBook",
+      "httpMethod":3,
+      "path":"/:id",
+      "pathParams":[{"pathParam":"id","index":0}],
+      "headerParams":[]
+    }
+  ]
+}
+```
+
+Ok! But what can I do with this. Have a look at the github project [js-restful-express](https://github.com/mseemann/js-restful-express).
+
+This is a base probject that different implementations can use to integrate this information in a concrete node js framework.
