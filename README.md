@@ -45,7 +45,7 @@ class BookService {
 
     @Path('/:id')
     @DELETE()
-    deleteBook(@PathParam('id') id:number, , @QueryParam('time') time:number): boolean {
+    deleteBook(@PathParam('id') id:number, @QueryParam('time') time:number): boolean {
         return true;
     }
 }
@@ -101,6 +101,6 @@ The result is a complete description of your Service:
 }
 ```
 
-Ok! But what can I do with this. Have a look at the github project [js-restful-express](https://github.com/mseemann/js-restful-express).
+Ok! But what can I do with this? Have a look at the github project [js-restful-express](https://github.com/mseemann/js-restful-express).
 
 This is a base project that different implementations can use to integrate this information in a concrete node js framework.
