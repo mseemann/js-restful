@@ -1,6 +1,6 @@
 {
   "name": "js-restful",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Create a RESTful service with ES7 decorators for your node.js application.",
   "main": "src/js-restful.js",
   "typings": "./src/js-restful.d.ts",
