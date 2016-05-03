@@ -39,7 +39,7 @@ export function DELETE() { return createHttpMethodFunction(HttpMethod.DELETE); }
 
 
 /**
- * Specify the Path for teh ressource. If the decorator is present at class level all methods paths will be
+ * Specify the Path for the ressource. If the decorator is present at class level all methods paths will be
  * prefixed with this path. 
  * @param path The path for the class or method. The path must not be start with /. 
  * The slash will be added automatically.
