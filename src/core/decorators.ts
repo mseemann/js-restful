@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import * as namings from './namings';
-import { ParamDescription, HttpMethod } from './descriptions';
+import {ParamDescription, HttpMethod, ContextTypes} from './descriptions';
 
 
 function createHttpMethodFunction(httpMethod:HttpMethod){
@@ -91,3 +91,11 @@ export function HeaderParam(name:string){ return createParamDecorator(name, nami
  * @returns the decorated function
  */
 export function QueryParam(name:string){ return createParamDecorator(name, namings.queryParam);}
+
+/**
+ * Specifies how a method parameter is evaluated. In this case the value will be taken
+ * from the context (for example the current Request).
+ * @param contextType the ContextTypes that should be used to provide the parameter to the method.
+ * @returns the decorated function
+ */
+export function Context(contextType:ContextTypes){ return createParamDecorator(ContextTypes[contextType], namings.contextParam);}

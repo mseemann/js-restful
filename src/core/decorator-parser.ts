@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { ServiceDescription, MethodDescription, HttpMethod, ParamDescription } from "./descriptions";
 import * as namings from './namings';
+import {contextParam} from "./namings";
 
 class Parser {
 
@@ -21,11 +22,12 @@ class Parser {
                 continue;
             }
 
-            var httpMethod: HttpMethod          = null;
-            var path:String                     = null;
-            var pathParams:ParamDescription[]   = [];
-            var headerParams:ParamDescription[] = [];
-            var queryParams:ParamDescription[]  = [];
+            var httpMethod: HttpMethod              = null;
+            var path:String                         = null;
+            var pathParams:ParamDescription[]       = [];
+            var headerParams:ParamDescription[]     = [];
+            var queryParams:ParamDescription[]      = [];
+            var contextParams:ParamDescription[]    = [];
 
             let methodKeys: any[] = Reflect.getMetadataKeys(method);
             methodKeys.forEach((k)=>{
@@ -42,7 +44,6 @@ class Parser {
                 }
             })
 
-
             // evaluate PathParams
             pathParams = Reflect.getMetadata(namings.pathParam, service, name) || [];
 
@@ -53,12 +54,16 @@ class Parser {
             // evaluate QueryParams
             queryParams = Reflect.getMetadata(namings.queryParam, service, name) || [];
 
+            // evaluate ContextParams
+            contextParams = Reflect.getMetadata(namings.contextParam, service, name) || [];
+
             if ( httpMethod !== null ) {
                 var md = new MethodDescription(name, httpMethod);
-                md.path         = path;
-                md.pathParams   = pathParams;
-                md.headerParams = headerParams;
-                md.queryParams  = queryParams;
+                md.path             = path;
+                md.pathParams       = pathParams;
+                md.headerParams     = headerParams;
+                md.queryParams      = queryParams;
+                md.contextParams    = contextParams;
                 methods.push(md);
             }
         }

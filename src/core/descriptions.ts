@@ -39,17 +39,22 @@ export enum HttpMethod {
     DELETE
 }
 
+export enum ContextTypes {
+    HttpRequest
+}
+
 /**
  * Description of a Service Method that is annotatded with at least a HTTP-Method.
  */
 export class MethodDescription {
     
-    methodName: string              = null;
-    httpMethod: HttpMethod          = null;
-    path:String | void              = null;
-    pathParams:ParamDescription[]   = [];
-    headerParams:ParamDescription[] = [];
-    queryParams:ParamDescription[]  = [];
+    methodName: string                  = null;
+    httpMethod: HttpMethod              = null;
+    path:String | void                  = null;
+    pathParams:ParamDescription[]       = [];
+    headerParams:ParamDescription[]     = [];
+    queryParams:ParamDescription[]      = [];
+    contextParams:ParamDescription[]    = [];
 
     constructor(name:string, httpMethod:HttpMethod){
         this.methodName = name;

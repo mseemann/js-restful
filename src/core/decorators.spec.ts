@@ -79,4 +79,14 @@ describe('rest-decorator', () => {
         })
     })
 
+    describe('contextParam decorator', () => {
+        it('should have one Context-param at the method contextTest', () => {
+            let contextParams: ParamDescription[] = Reflect.getMetadata(namings.contextParam, bookService, 'contextTest');
+
+            expect(contextParams.length).toBe(1);
+
+            expect(contextParams).toContain({paramName:'HttpRequest', index: 0});
+        })
+    })
+
 });

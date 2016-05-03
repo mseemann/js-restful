@@ -1,5 +1,6 @@
 
-import {GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam} from './decorators';
+import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam, Context } from './decorators';
+import { ContextTypes } from './descriptions';
 
 export class Book {
     id:number;
@@ -33,6 +34,12 @@ export class BookService {
     @Path('/:id')
     @DELETE()
     deleteBook(@PathParam('id') id:number, @QueryParam('time') time:number): boolean{
+        return true;
+    }
+
+    @GET()
+    @Path('/contexttest')
+    contextTest(@Context(ContextTypes.HttpRequest) req:any){
         return true;
     }
 }

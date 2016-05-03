@@ -17,8 +17,8 @@ describe('rest-serviceDescription-parser', () => {
        expect(serviceDescription.basePath).toBe('/books');
     })
 
-    it('should have 4 methods decorated with a httpMethod', () => {
-        expect(serviceDescription.methods.length).toBe(4);
+    it('should have 5 methods decorated with a httpMethod', () => {
+        expect(serviceDescription.methods.length).toBe(5);
     })
 
     describe('allBooks method', () => {
@@ -124,6 +124,15 @@ describe('rest-serviceDescription-parser', () => {
 
         it('just for fun the method resturns what is provided', () => {
             expect(bookService[method.methodName]('name')).toEqual({'id':1, 'name':'name'});
+        })
+    })
+
+    describe('contextTest method', () => {
+        let method = serviceDescription.getMethodDescriptorForMethodName('contextTest');
+
+        it('should have one ContextParam', () => {
+            expect(method.contextParams.length).toBe(1);
+            expect(method.contextParams).toContain({paramName: 'HttpRequest', index: 0});
         })
     })
 });

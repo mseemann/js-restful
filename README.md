@@ -16,7 +16,7 @@ npm install js-restful --save
 Extend your node js service class with decorators (this is TypeScript with decorators!):
 
 ```typescript
-import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam } from 'js-restful';
+import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam } from 'js-restful';
 
 class Book {
     id:number;
