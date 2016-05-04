@@ -131,8 +131,9 @@ describe('rest-serviceDescription-parser', () => {
         let method = serviceDescription.getMethodDescriptorForMethodName('contextTest');
 
         it('should have one ContextParam', () => {
-            expect(method.contextParams.length).toBe(1);
+            expect(method.contextParams.length).toBe(2);
             expect(method.contextParams).toContain({paramName: 'HttpRequest', index: 0});
+            expect(method.contextParams).toContain({paramName: 'HttpResponse', index: 1});
         })
     })
 });

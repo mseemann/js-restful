@@ -39,7 +39,7 @@ export class BookService {
 
     @GET()
     @Path('/contexttest')
-    contextTest(@Context(ContextTypes.HttpRequest) req:any){
+    contextTest(@Context(ContextTypes.HttpRequest) req:any, @Context(ContextTypes.HttpResponse) res:any){
         return true;
     }
 }

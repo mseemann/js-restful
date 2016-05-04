@@ -40,7 +40,8 @@ export enum HttpMethod {
 }
 
 export enum ContextTypes {
-    HttpRequest
+    HttpRequest,
+    HttpResponse
 }
 
 /**

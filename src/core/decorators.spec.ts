@@ -80,12 +80,13 @@ describe('rest-decorator', () => {
     })
 
     describe('contextParam decorator', () => {
-        it('should have one Context-param at the method contextTest', () => {
+        it('should have two Context-param at the method contextTest', () => {
             let contextParams: ParamDescription[] = Reflect.getMetadata(namings.contextParam, bookService, 'contextTest');
 
-            expect(contextParams.length).toBe(1);
+            expect(contextParams.length).toBe(2);
 
             expect(contextParams).toContain({paramName:'HttpRequest', index: 0});
+            expect(contextParams).toContain({paramName:'HttpResponse', index: 1});
         })
     })
 
