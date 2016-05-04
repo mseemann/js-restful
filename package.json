@@ -28,7 +28,7 @@
   ],
   "author": "Michael Seemann",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "reflect-metadata": "0.1.2"
   },
   "devDependencies": {
