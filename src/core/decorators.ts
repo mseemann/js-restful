@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import * as namings from './namings';
 import {ParamDescription, HttpMethod, ContextTypes} from './descriptions';
-
+import { DecoratorUtil } from './decoratorUtil';
 
 function createHttpMethodFunction(httpMethod:HttpMethod){
     return function(target: Object, key: string, descriptor: TypedPropertyDescriptor<any>) {
@@ -58,14 +58,6 @@ export function Path (path:string) : Function {
     }
 }
 
-function createParamDecorator(name: string, pathParamKey: string){
-    return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
-        let existingPathParams: ParamDescription[] = Reflect.getOwnMetadata(pathParamKey, target, propertyKey) || [];
-        existingPathParams.push({paramName:name, index: parameterIndex});
-        Reflect.defineMetadata(pathParamKey, existingPathParams, target, propertyKey);
-    }
-}
-
 
 /**
  * Specifies how a method parameter is evealuated. In this case the value will be taken
@@ -73,7 +65,7 @@ function createParamDecorator(name: string, pathParamKey: string){
  * @param name the name in the path that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
-export function PathParam(name:string){ return createParamDecorator(name, namings.pathParam);}
+export function PathParam(name:string){ return DecoratorUtil.createParamDecorator(name, namings.pathParam);}
 
 
 /**
@@ -82,7 +74,7 @@ export function PathParam(name:string){ return createParamDecorator(name, naming
  * @param name the name in the http header that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
-export function HeaderParam(name:string){ return createParamDecorator(name, namings.headerParam);}
+export function HeaderParam(name:string){ return DecoratorUtil.createParamDecorator(name, namings.headerParam);}
 
 /**
  * Specifies how a method parameter is evaluated. In this case the value will be taken
@@ -90,7 +82,7 @@ export function HeaderParam(name:string){ return createParamDecorator(name, nami
  * @param name the name of the query param that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
-export function QueryParam(name:string){ return createParamDecorator(name, namings.queryParam);}
+export function QueryParam(name:string){ return DecoratorUtil.createParamDecorator(name, namings.queryParam);}
 
 /**
  * Specifies how a method parameter is evaluated. In this case the value will be taken
@@ -98,4 +90,4 @@ export function QueryParam(name:string){ return createParamDecorator(name, namin
  * @param contextType the ContextTypes that should be used to provide the parameter to the method.
  * @returns the decorated function
  */
-export function Context(contextType:ContextTypes){ return createParamDecorator(ContextTypes[contextType], namings.contextParam);}
+export function Context(contextType:ContextTypes){ return DecoratorUtil.createParamDecorator(ContextTypes[contextType], namings.contextParam);}
