@@ -2,8 +2,8 @@ language: node_js
 sudo: false
 node_js:
   - "0.12"
-# Send coverage data to Coveralls
-# xxafter_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-# Send coverage data to codeclimate
+
+# Send coverage data to Coveralls and codeclimate
 after_script:
-  - codeclimate-test-reporter < ./coverage/lcov.info
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - cat ./coverage/lcov.info | ./node_modules/codeclimate-test-reporter/bin/codeclimate.js
