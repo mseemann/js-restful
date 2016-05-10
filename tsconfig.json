@@ -18,6 +18,7 @@
     "src/core/decorators.ts",
     "src/core/decorators.spec.ts",
     "src/core/decoratorUtil.ts",
+    "src/core/descriptions.spec.ts",
     "src/core/descriptions.ts",
     "src/core/decorator-parser.ts",
     "src/core/decorator-parser.spec.ts",

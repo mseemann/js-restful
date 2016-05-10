@@ -1,3 +1,4 @@
+import {permitAll, rolesAllowed} from "./namings";
 /**
  * A heigher level description of a service. No need to parse
  * the Decortaors by yourself. Just use the @see ServiceParser.
@@ -18,6 +19,17 @@ export class ServiceDescription {
 
     getMethodDescriptorForMethodName(name:string): MethodDescription {
         return this.methodMap[name];
+    }
+
+    isSecurityContextUsed():boolean{
+        if (this.permitAll || this.rolesAllowed.length>0){
+            return true;
+        }
+
+        return this.methods.some( (method) => {
+            return method.isSecurityContextUsed();
+        })
+
     }
 }
 
@@ -65,6 +77,14 @@ export class MethodDescription {
     constructor(name:string, httpMethod:HttpMethod){
         this.methodName = name;
         this.httpMethod = httpMethod;
+    }
+
+    isSecurityContextUsed():boolean {
+        if(this.permitAll || this.rolesAllowed.length>0){
+            return true;
+        }
+
+        return this.securityContextParam ? true : false;
     }
 }
 
