@@ -90,4 +90,10 @@ describe('rest-decorator', () => {
         })
     })
 
+    describe('securitycontext parameter', () => {
+        it('should have one SecurityContext-param at the method securityContextTest', () => {
+            let secContextParams: ParamDescription = Reflect.getMetadata(namings.securityContextParam, bookService, 'securityContextTest');
+            expect(secContextParams).toEqual({paramName:'SecurityContext', index: 0});
+        })
+    })
 });

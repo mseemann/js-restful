@@ -49,16 +49,27 @@ export enum ContextTypes {
  */
 export class MethodDescription {
     
-    methodName: string                  = null;
-    httpMethod: HttpMethod              = null;
-    path:String | void                  = null;
-    pathParams:ParamDescription[]       = [];
-    headerParams:ParamDescription[]     = [];
-    queryParams:ParamDescription[]      = [];
-    contextParams:ParamDescription[]    = [];
+    methodName: string                      = null;
+    httpMethod: HttpMethod                  = null;
+    path:String | void                      = null;
+    pathParams:ParamDescription[]           = [];
+    headerParams:ParamDescription[]         = [];
+    queryParams:ParamDescription[]          = [];
+    contextParams:ParamDescription[]        = [];
+    securityContextParam:ParamDescription   = null;
 
     constructor(name:string, httpMethod:HttpMethod){
         this.methodName = name;
         this.httpMethod = httpMethod;
     }
+}
+
+export interface IUser {
+
+}
+
+export interface ISecurityContext {
+
+    user:IUser;
+    isUserInRole(roleName:string):boolean;
 }

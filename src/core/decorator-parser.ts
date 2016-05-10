@@ -22,12 +22,13 @@ class Parser {
                 continue;
             }
 
-            var httpMethod: HttpMethod              = null;
-            var path:String                         = null;
-            var pathParams:ParamDescription[]       = [];
-            var headerParams:ParamDescription[]     = [];
-            var queryParams:ParamDescription[]      = [];
-            var contextParams:ParamDescription[]    = [];
+            var httpMethod: HttpMethod                  = null;
+            var path:String                             = null;
+            var pathParams:ParamDescription[]           = [];
+            var headerParams:ParamDescription[]         = [];
+            var queryParams:ParamDescription[]          = [];
+            var contextParams:ParamDescription[]        = [];
+            var securityContextParam:ParamDescription   = null;
 
             let methodKeys: any[] = Reflect.getMetadataKeys(method);
             methodKeys.forEach((k)=>{
@@ -57,13 +58,17 @@ class Parser {
             // evaluate ContextParams
             contextParams = Reflect.getMetadata(namings.contextParam, service, name) || [];
 
+            // evaluate the security context
+            securityContextParam = Reflect.getMetadata(namings.securityContextParam, service, name);
+
             if ( httpMethod !== null ) {
                 var md = new MethodDescription(name, httpMethod);
-                md.path             = path;
-                md.pathParams       = pathParams;
-                md.headerParams     = headerParams;
-                md.queryParams      = queryParams;
-                md.contextParams    = contextParams;
+                md.path                 = path;
+                md.pathParams           = pathParams;
+                md.headerParams         = headerParams;
+                md.queryParams          = queryParams;
+                md.contextParams        = contextParams;
+                md.securityContextParam = securityContextParam;
                 methods.push(md);
             }
         }

@@ -1,6 +1,6 @@
 
-import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam, Context } from './decorators';
-import { ContextTypes } from './descriptions';
+import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam, Context, SecurityContext } from './decorators';
+import { ContextTypes, ISecurityContext } from './descriptions';
 
 export class Book {
     id:number;
@@ -40,6 +40,12 @@ export class BookService {
     @GET()
     @Path('/contexttest')
     contextTest(@Context(ContextTypes.HttpRequest) req:any, @Context(ContextTypes.HttpResponse) res:any){
+        return true;
+    }
+    
+    @GET()
+    @Path('/securitycontext')
+    securityContextTest(@SecurityContext() context:ISecurityContext){
         return true;
     }
 }

@@ -17,8 +17,8 @@ describe('rest-serviceDescription-parser', () => {
        expect(serviceDescription.basePath).toBe('/books');
     })
 
-    it('should have 5 methods decorated with a httpMethod', () => {
-        expect(serviceDescription.methods.length).toBe(5);
+    it('should have 6 methods decorated with a httpMethod', () => {
+        expect(serviceDescription.methods.length).toBe(6);
     })
 
     describe('allBooks method', () => {
@@ -134,6 +134,14 @@ describe('rest-serviceDescription-parser', () => {
             expect(method.contextParams.length).toBe(2);
             expect(method.contextParams).toContain({paramName: 'HttpRequest', index: 0});
             expect(method.contextParams).toContain({paramName: 'HttpResponse', index: 1});
+        })
+    })
+
+    describe('security context test method', () => {
+        let method = serviceDescription.getMethodDescriptorForMethodName('securityContextTest');
+
+        it('should have one SecurityContextParam', () => {
+            expect(method.securityContextParam).toEqual({paramName:'SecurityContext', index: 0});
         })
     })
 });

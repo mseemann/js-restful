@@ -91,3 +91,13 @@ export function QueryParam(name:string){ return DecoratorUtil.createParamDecorat
  * @returns the decorated function
  */
 export function Context(contextType:ContextTypes){ return DecoratorUtil.createParamDecorator(ContextTypes[contextType], namings.contextParam);}
+
+/**
+ * Specifies a method parameter that is a ISecurityContext
+ * @returns the decorated function
+ */
+export function  SecurityContext(){
+    return function(target: Object, propertyKey: string | symbol, parameterIndex: number){
+        Reflect.defineMetadata(namings.securityContextParam, {paramName:"SecurityContext", index: parameterIndex}, target, propertyKey);
+    }
+};
