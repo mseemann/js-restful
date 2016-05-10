@@ -8,6 +8,8 @@ Create a RESTful service with ES7 decorators for your node.js application.
 [![Code Climate](https://codeclimate.com/github/mseemann/js-restful/badges/gpa.svg)](https://codeclimate.com/github/mseemann/js-restful)
 [![Issue Count](https://codeclimate.com/github/mseemann/js-restful/badges/issue_count.svg)](https://codeclimate.com/github/mseemann/js-restful)
 [![Test Coverage](https://codeclimate.com/github/mseemann/js-restful/badges/coverage.svg)](https://codeclimate.com/github/mseemann/js-restful/coverage)
+[![Issue Stats](http://issuestats.com/github/mseemann/js-restful/badge/issue)](http://issuestats.com/github/mseemann/js-restful)
+
 
 **Installation**
 ```bash
