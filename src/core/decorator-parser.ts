@@ -80,8 +80,6 @@ class Parser {
         // only descriptions marked with get, post, put, delete
         let methods:MethodDescription[] = this.parseMethodDescriptions(service);
         methods.forEach( (aMethod) => {
-            // may have a path,
-            // may have parameter - these parameters must be present oin the path
             this.serviceDescription.addMethod(aMethod);
         });
 
