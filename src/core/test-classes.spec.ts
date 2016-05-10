@@ -1,5 +1,8 @@
 
-import { GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam, Context, SecurityContext } from './decorators';
+import {
+    GET, POST, PUT, DELETE, Path, PathParam, HeaderParam, QueryParam, Context, SecurityContext,
+    PermitAll, RolesAllowed
+} from './decorators';
 import { ContextTypes, ISecurityContext } from './descriptions';
 
 export class Book {
@@ -7,6 +10,7 @@ export class Book {
     name: string;
 }
 
+@PermitAll()
 @Path('/books')
 export class BookService {
 
@@ -15,12 +19,14 @@ export class BookService {
     unDecoratedMethod(){}
 
     @GET()
+    @RolesAllowed(['admin', 'user'])
     allBooks() : Book[]{
        return [];
     }
 
     @Path('/:name')
     @POST()
+    @PermitAll()
     createBook(@PathParam('name') name:string, @HeaderParam('token') token:string) :Book {
         return {id:1, name:name};
     }

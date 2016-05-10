@@ -17,6 +17,10 @@ describe('rest-serviceDescription-parser', () => {
        expect(serviceDescription.basePath).toBe('/books');
     })
 
+    it('should have a permitAll decorator', () => {
+        expect(serviceDescription.permitAll).toBe(true);
+    })
+
     it('should have 6 methods decorated with a httpMethod', () => {
         expect(serviceDescription.methods.length).toBe(6);
     })
@@ -30,6 +34,12 @@ describe('rest-serviceDescription-parser', () => {
 
         it('should have no Path', () => {
             expect(method.path).toBeNull();
+        })
+
+        it('should have two roles that are permitted to access the method', () => {
+            expect(method.rolesAllowed.length).toBe(2);
+            expect(method.rolesAllowed).toContain('admin');
+            expect(method.rolesAllowed).toContain('user');
         })
 
         it('should have no PathParams', () => {
@@ -106,6 +116,10 @@ describe('rest-serviceDescription-parser', () => {
 
         it('should be a POST method', () => {
             expect(method.httpMethod).toBe(HttpMethod.POST);
+        })
+
+        it('should be permitted for all', () => {
+            expect(method.permitAll).toBe(true);
         })
 
         it('should have a path with name', () => {

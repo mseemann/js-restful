@@ -12,6 +12,16 @@ class Parser {
         return path ? path : null;
     }
 
+    parsePermitAllClassLevel(service: Object):boolean {
+        let permitAll = Reflect.getMetadata(namings.permitAll, service.constructor);
+        return permitAll === true ? true : false;
+    }
+
+    parseRolesClassLevel(service: Object): string[] {
+        let roles = Reflect.getMetadata(namings.rolesAllowed, service.constructor) || [];
+        return roles;
+    }
+
     parseMethodDescriptions(service): MethodDescription[] {
 
         var methods:MethodDescription[] = [];
@@ -29,6 +39,8 @@ class Parser {
             var queryParams:ParamDescription[]          = [];
             var contextParams:ParamDescription[]        = [];
             var securityContextParam:ParamDescription   = null;
+            var permitAll:boolean                       = false;
+            var rolesAllowes: string[]                  = [];
 
             let methodKeys: any[] = Reflect.getMetadataKeys(method);
             methodKeys.forEach((k)=>{
@@ -39,16 +51,23 @@ class Parser {
                 }
 
                 // determine the path
-                if ( k === namings.path ) {
+                else if ( k === namings.path ) {
                     let rawPath = Reflect.getMetadata(k, method);
                     path = rawPath ? rawPath : null;
+                }
+
+                else if ( k === namings.permitAll ) {
+                    permitAll = true;
+                }
+
+                else if ( k === namings.rolesAllowed ) {
+                    rolesAllowes = Reflect.getMetadata(k, method) || [];
                 }
             })
 
             // evaluate PathParams
             pathParams = Reflect.getMetadata(namings.pathParam, service, name) || [];
-
-
+            
             // evaluate HeaderParams
             headerParams = Reflect.getMetadata(namings.headerParam, service, name) || [];
 
@@ -61,6 +80,7 @@ class Parser {
             // evaluate the security context
             securityContextParam = Reflect.getMetadata(namings.securityContextParam, service, name);
 
+
             if ( httpMethod !== null ) {
                 var md = new MethodDescription(name, httpMethod);
                 md.path                 = path;
@@ -69,6 +89,8 @@ class Parser {
                 md.queryParams          = queryParams;
                 md.contextParams        = contextParams;
                 md.securityContextParam = securityContextParam;
+                md.permitAll            = permitAll;
+                md.rolesAllowed         = rolesAllowes;
                 methods.push(md);
             }
         }
@@ -81,6 +103,12 @@ class Parser {
         let basePath = this.parseBasePath(service);
         // may be null or /
         this.serviceDescription.basePath = basePath;
+        
+        let permitAll = this.parsePermitAllClassLevel(service);
+        this.serviceDescription.permitAll = permitAll;
+        
+        let roles = this.parseRolesClassLevel(service);
+        this.serviceDescription.rolesAllowed = roles;
 
         // only descriptions marked with get, post, put, delete
         let methods:MethodDescription[] = this.parseMethodDescriptions(service);

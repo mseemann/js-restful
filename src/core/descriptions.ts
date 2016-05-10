@@ -5,6 +5,8 @@
 export class ServiceDescription {
 
     basePath: string | void;
+    permitAll: boolean = false;
+    rolesAllowed: string[] = [];
 
     methods: MethodDescription[] = [];
     private methodMap : { [key:string]:MethodDescription; } = {};
@@ -57,6 +59,8 @@ export class MethodDescription {
     queryParams:ParamDescription[]          = [];
     contextParams:ParamDescription[]        = [];
     securityContextParam:ParamDescription   = null;
+    permitAll:boolean                       = false;
+    rolesAllowed:string[]                   = [];
 
     constructor(name:string, httpMethod:HttpMethod){
         this.methodName = name;

@@ -46,16 +46,7 @@ export function DELETE() { return createHttpMethodFunction(HttpMethod.DELETE); }
  * @returns the decorated function
  */
 export function Path (path:string) : Function {
-
-    return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor){
-        if(!propertyKey && !descriptor){
-            // add meta data to the class itself - e.g. target is the constructor and propertyKey and serviceDescription are undefined
-            return Reflect.defineMetadata(namings.path, path, target);
-        } else {
-            // add meta data to a function
-            return Reflect.defineMetadata(namings.path, path, descriptor.value);
-        }
-    }
+    return DecoratorUtil.decorateClassOrMethod(namings.path, path);
 }
 
 
@@ -101,3 +92,11 @@ export function  SecurityContext(){
         Reflect.defineMetadata(namings.securityContextParam, {paramName:"SecurityContext", index: parameterIndex}, target, propertyKey);
     }
 };
+
+export function PermitAll() : Function {
+    return DecoratorUtil.decorateClassOrMethod(namings.permitAll, true);
+}
+
+export function RolesAllowed(roles:string[]) : Function {
+    return DecoratorUtil.decorateClassOrMethod(namings.rolesAllowed, roles);
+}

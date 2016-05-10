@@ -2,12 +2,15 @@
 
 const namespace     = 'js-restful';
 const separator     = ':';
+const prefix        = namespace + separator;
 
-export const httpMethodMarker = namespace + separator + 'HTTP-METHOD';
+export const httpMethodMarker = prefix + 'HTTP-METHOD';
 
-export const path                   = namespace + separator + 'Path';
-export const pathParam              = namespace + separator + 'PathParam';
-export const headerParam            = namespace + separator + 'HeaderParam';
-export const queryParam             = namespace + separator + 'QueryParam';
-export const contextParam           = namespace + separator + 'ContextParam';
-export const securityContextParam   = namespace + separator + 'SecurityContextParam';
+export const path                   = prefix + 'Path';
+export const pathParam              = prefix + 'PathParam';
+export const headerParam            = prefix + 'HeaderParam';
+export const queryParam             = prefix + 'QueryParam';
+export const contextParam           = prefix + 'ContextParam';
+export const securityContextParam   = prefix + 'SecurityContextParam';
+export const permitAll              = prefix + 'PermitAll';
+export const rolesAllowed           = prefix + 'RolesAllowed';
