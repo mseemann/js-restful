@@ -32,6 +32,7 @@
     "reflect-metadata": "0.1.2"
   },
   "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.1",
     "coveralls": "^2.11.9",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "2.4.1",
