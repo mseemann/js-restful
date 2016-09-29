@@ -14,6 +14,7 @@ Create a RESTful service with ES7 decorators for your node.js application.
 ```bash
 npm install js-restful --save
 ```
+Make sure you have a shim for es7 reflect. For example core-js or reflect-metadat.
 
 **Usage**
 Extend your node js service class with decorators (this is TypeScript with decorators!):

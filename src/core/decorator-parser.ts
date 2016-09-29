@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { ServiceDescription, MethodDescription, HttpMethod, ParamDescription } from "./descriptions";
 import * as namings from './namings';
 import {contextParam} from "./namings";

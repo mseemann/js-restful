@@ -3,25 +3,19 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
+    "lib": ["es5"],
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "declaration": true
-  },
-  "files":[
-    "typings/main.d.ts",
-    "src/vendor.ts",
-    "src/js-restful.ts",
-    "src/core/namings.ts",
-    "src/core/decorators.ts",
-    "src/core/decorators.spec.ts",
-    "src/core/decoratorUtil.ts",
-    "src/core/descriptions.spec.ts",
-    "src/core/descriptions.ts",
-    "src/core/decorator-parser.ts",
-    "src/core/decorator-parser.spec.ts",
-    "src/core/test-classes.spec.ts"
-  ]
+    "declaration": true,
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+      "reflect-metadata" // the typings for core-js are limited - es7.reflect is missing :( use reflect-metadata typings insted
+    ]
+  }
 }

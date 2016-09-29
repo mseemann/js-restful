@@ -5,9 +5,8 @@
   "main": "src/js-restful.js",
   "typings": "./src/js-restful.d.ts",
   "scripts": {
-    "install_typings": "typings install",
-    "test": "typings install && tsc && node --max-old-space-size=4096 node_modules/karma/bin/karma start",
-    "prepublish": "typings install && tsc",
+    "test": "tsc -version && tsc && node --max-old-space-size=4096 node_modules/karma/bin/karma start",
+    "prepublish": "tsc",
     "docs": "jsdoc -c config/jsdoc-conf.json -r src"
   },
   "repository": {
@@ -28,14 +27,14 @@
   ],
   "author": "Michael Seemann",
   "license": "MIT",
-  "dependencies": {
-    "reflect-metadata": "0.1.2"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "0.1.2"
-  },
+  "dependencies": {},
+  "peerDependencies": {},
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/jasmine": "^2.2.34",
+    "@types/reflect-metadata": "0.0.4",
     "codeclimate-test-reporter": "^0.3.1",
+    "core-js": "^2.4.1",
     "coveralls": "^2.11.9",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "2.4.1",
@@ -52,10 +51,10 @@
     "source-map-loader": "^0.1.5",
     "ts-helpers": "^1.1.1",
     "ts-loader": "^0.8.2",
-    "tslint": "3.8.1",
+    "tslint": "3.15.1",
     "tslint-loader": "^2.1.4",
-    "typescript": "1.8.10",
-    "typings": "0.8.1",
+    "typescript": "2.0.3",
+    "typings": "1.4.0",
     "webpack": "1.13.0"
   },
   "bugs": {

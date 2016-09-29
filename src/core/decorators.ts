@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import * as namings from './namings';
 import {ParamDescription, HttpMethod, ContextTypes} from './descriptions';
 import { DecoratorUtil } from './decoratorUtil';
