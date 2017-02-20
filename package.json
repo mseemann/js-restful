@@ -46,7 +46,7 @@
     "karma-mocha-reporter": "2.2.1",
     "karma-phantomjs-launcher": "1.0.2",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "1.8.1",
+    "karma-webpack": "2.0.2",
     "phantomjs-prebuilt": "2.1.14",
     "source-map-loader": "0.1.6",
     "ts-helpers": "1.1.2",
