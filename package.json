@@ -30,7 +30,7 @@
   "dependencies": {},
   "peerDependencies": {},
   "devDependencies": {
-    "@types/core-js": "0.9.35",
+    "@types/core-js": "0.9.36",
     "@types/jasmine": "2.5.39",
     "@types/reflect-metadata": "0.0.5",
     "codeclimate-test-reporter": "0.4.1",
