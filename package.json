@@ -50,7 +50,7 @@
     "phantomjs-prebuilt": "2.1.14",
     "source-map-loader": "0.2.0",
     "ts-helpers": "1.1.2",
-    "ts-loader": "2.0.2",
+    "ts-loader": "2.3.2",
     "tslint": "4.5.1",
     "tslint-loader": "3.4.3",
     "typescript": "2.2.1",
