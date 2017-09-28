@@ -35,7 +35,7 @@
     "@types/reflect-metadata": "0.0.5",
     "codeclimate-test-reporter": "0.4.1",
     "core-js": "2.4.1",
-    "coveralls": "2.13.0",
+    "coveralls": "2.13.3",
     "istanbul-instrumenter-loader": "2.0.0",
     "jasmine-core": "2.5.2",
     "jsdoc": "3.4.3",
