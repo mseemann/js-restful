@@ -48,7 +48,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.3",
     "phantomjs-prebuilt": "2.1.14",
-    "source-map-loader": "0.2.0",
+    "source-map-loader": "0.2.2",
     "ts-helpers": "1.1.2",
     "ts-loader": "2.3.0",
     "tslint": "4.5.1",
